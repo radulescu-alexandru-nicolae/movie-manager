@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{normalizer.css}">
+    <link rel="stylesheet" th:href="@{layout.css}">
+    <title>Document</title>
+</head>
+
+<body>
+<section class="bener">
+</section>
+<nav>
+    <div class="container-nav">
+        <img src="poze/logo.png" alt="">
+        <div class="meniu">
+            <span></span>
+        </div>
+        <ul class="nav-ul">
+            <li><a href="">Home</a></li>
+            <li><a href="">Program</a></li>
+            <li><a href="">Filme</a></li>
+            <li><a href="">Fidelitate</a></li>
+            <li><a href="">Tarife</a></li>
+            <li><a href="">Noutati</a></li>
+            <li><a href="">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+<main>
+    <div class="container-main">
+        <h2>Filme</h2>
+        <section class="filme" th:each="movie:${lista}">
+            <section class="film">
+
+<!--                <div class="poza-container-bd" style="background-image: url("")"></div>-->
+                <img th:src="'data:image/jpeg;base64,' + ${movie.image()}"alt="">
+
+                <div class="container-durata-rating">
+                    <div class="durata">
+                        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm0 11h6v1h-7v-9h1v8z"/></svg>
+                        <p th:text="${movie.getDuration_min()}">2h 30m</p>
+                    </div>
+                    <div class="rating">
+                        <p>N 15</p>
+                    </div>
+                </div>
+                <div class="detalii-film">
+                    <a href="" th:text="${movie.getTitle()}">The Suicide Squad</a>
+                    <p class="recomandare">Recomandarea Saptamanii</p>
+                    <p th:text="${movie.getDirector()}"><span>Director:</span>James Gunn</p>
+                    <p th:text="${movie.getCast()}"><span>Cast:</span>Margot Robbie,Joel Kinnaman,Idris Elba,Alice Braga</p>
+                    <p class="description" th:text="${movie.getDescriere()}"><span>Description:</span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse quia doloremque sequi officiis. Quia nam aperiam quo quod libero nesciunt necessitatibus ex quos, iure deserunt corrupti. Debitis quos tempore
+                        fuga.
+                    </p>
+                    <a href="" class="yt">
+                        <svg id="Bold" enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg"><path d="m23.469 5.929.03.196c-.29-1.029-1.073-1.823-2.068-2.112l-.021-.005c-1.871-.508-9.4-.508-9.4-.508s-7.51-.01-9.4.508c-1.014.294-1.798 1.088-2.083 2.096l-.005.021c-.699 3.651-.704 8.038.031 11.947l-.031-.198c.29 1.029 1.073 1.823 2.068 2.112l.021.005c1.869.509 9.4.509 9.4.509s7.509 0 9.4-.509c1.015-.294 1.799-1.088 2.084-2.096l.005-.021c.318-1.698.5-3.652.5-5.648 0-.073 0-.147-.001-.221.001-.068.001-.149.001-.23 0-1.997-.182-3.951-.531-5.846zm-13.861 9.722v-7.293l6.266 3.652z"/></svg>
+                        <p>Trailer</p>
+                    </a>
+                </div>
+                <section class="container-alegere-ora">
+                    <div class="alegere-ora">
+                        <p class="alegere">Alegere ora</p>
+                        <p>&#9660;</p>
+                    </div>
+                    <div class="orar">
+                        <div class="orase">
+                            <ul>
+                                <li><a href="">Craiova Mercur</a></li>
+                                <li><a href="">Craiova VIP Electroputere</a></li>
+                                <li><a href="">ALba Iulia</a></li>
+                            </ul>
+                        </div>
+                        <div class="ore-zile">
+
+                            <ul class="first-ul-ore">
+                                <li class="li-first-background">
+                                    <div class="container-li-background">
+                                        <h3>Maine 13.08</h3>
+                                        <ul class="ul-ore">
+                                            <li>13:50</li>
+                                            <li>17:50</li>
+                                            <li>20:00</li>
+                                            <li>20:40</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="li-first-background">
+                                    <div class="container-li-background">
+                                        <h3>Marti 13.08</h3>
+                                        <ul class="ul-ore">
+                                            <li>13:50</li>
+                                            <li>17:50</li>
+                                            <li>20:00</li>
+                                            <li>20:40</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="li-first-background">
+                                    <div class="container-li-background">
+                                        <h3>Miercuri 13.08</h3>
+                                        <ul class="ul-ore">
+                                            <li>13:50</li>
+                                            <li>17:50</li>
+                                            <li>20:00</li>
+                                            <li>20:40</li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li class="li-first-background">
+                                    <div class="container-li-background">
+                                        <h3>Joi 13.08</h3>
+                                        <ul class="ul-ore">
+                                            <li>13:50</li>
+                                            <li>17:50</li>
+                                            <li>20:00</li>
+                                            <li>20:40</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+
+        </section>
+
+
+
+
+    </div>
+
+</main>
+<footer id="first_footer">
+    <div id="container_footer">
+        <ol>
+            <li>&gt; Home</li>
+            <li>&gt; Noutati</li>
+            <li>&gt; Despre sali</li>
+            <li>&gt; Galerie</li>
+            <li>&gt; Informatii</li>
+            <li>&gt; Termeni si conditii</li>
+            <li>&gt; Politica cookie</li>
+            <li>&gt; Protectia datelor</li>
+            <li>&gt; Contact</li>
+        </ol>
+        <div id="social_media">
+            <h2>Social Media</h2>
+            <ul>
+                <li><img src="poze/facebook-circular-logo.svg" alt=""></li>
+                <li><img src="poze/google-plus.svg" alt=""></li>
+                <li><img src="poze/instagram.svg" alt=""></li>
+                <li><img src="poze/youtube (3).svg" alt=""></li>
+            </ul>
+        </div>
+    </div>
+    <p>&copy; Cinematograf 2021</p>
+</footer>
+<script th:src="@{meniu.js}"></script>
+</body>
+
+</html>
