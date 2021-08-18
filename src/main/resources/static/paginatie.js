@@ -37,12 +37,16 @@ function displayOnly4(numar) {
 }
 displayOnly4(4);
 let nr;
+showButton();
+
 ul_buttoane.addEventListener('click', (e) => {
-    showButton();
     if (e.target.tagName == "LI") {
         const name = e.target.className;
         if (name !== "next-page" && name !== "previous-page") {
             nr = e.target.textContent;
+            nr = parseInt(nr);
+            animateieButton(parseInt(nr, 10));
+            disableAnimatie(nr);
             nr = nr * 4;
             displayOnly4(nr);
         } else if (e.target.className == "next-page") {
@@ -50,34 +54,49 @@ ul_buttoane.addEventListener('click', (e) => {
                 nr = 4;
             }
             nr = nr + 4;
-            console.log(nr + 'dsadasd');
+            let aux = nr / 4;
+            aux = parseInt(aux);
+            animateieButton(aux);
+            disableAnimatie(aux);
             displayOnly4(nr);
         } else if (e.target.className == "previous-page") {
-
             nr = nr - 4;
+            let aux = nr / 4;
+            aux = parseInt(aux);
+            animateieButton(aux);
+            disableAnimatie(aux);
             displayOnly4(nr);
         }
     }
+    if (nr === container_filme.children.length) {
+        document.querySelector('.next-page').style.display = "none";
+    } else {
+        document.querySelector('.next-page').style.display = "flex";
+    }
+    if (nr > 4) {
+        document.querySelector('.previous-page').style.display = "flex";
+    } else {
+        document.querySelector('.previous-page').style.display = "none";
+    }
 });
 
-// showButton();
+function animateieButton(nr) {
+    ul_buttoane.children[nr].style.color = "black";
+    ul_buttoane.children[nr].style.border = "2px solid #fbbd61";
+    console.log(ul_buttoane.children[2]);
+
+}
+
+function disableAnimatie(nr) {
+    for (let i = 0; i < ul_buttoane.children.length; i++) {
+        if (i !== nr) {
+            ul_buttoane.children[i].style.border = "1px solid gray";
+            color = "#fbbd61";
+
+        }
+    }
+}
 
 function showButton() {
-    console.log(nr);
-    console.log(container_filme.children.length + 'container');
-    if (nr == container_filme.children.length) {
-        document.querySelector('.next-page').style.display = "none";
-        console.log('a' + nr);
-    } else if (nr >= 4) {
-        document.querySelector('.next-page').style.display = "flex";
-        console.log('b');
-    }
-    if (nr > 5) {
-        console.log('c')
-        document.querySelector('.previous-page').style.display = "flex";
-    } else if (nr < 5) {
-        console.log('d');
-        document.querySelector('.previous-page').style.display = "none";
-
-    }
+    document.querySelector('.previous-page').style.display = "none";
 }
