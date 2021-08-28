@@ -92,8 +92,7 @@
             <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
             <h2>Drag & Drop to Upload File</h2>
             <span>OR</span>
-            <button>Browse File</button>
-            <input type="file" hidden>
+            <input type="file"  name="image">
         </div>
         <div class="container-label">
             <label for="title">Title</label>
@@ -113,18 +112,16 @@
             <div class="aux1">
                 <button type="submit" class="create">Update Film</button>
             </div>
-            <form th:action="@{/movies/{id}/delete (id=${movie.get().getId()})}" th:method="POST" onsubmit="return confirm('Do you realy want to delete this movie');">
-            <div class="aux3">
-                <input type="submit" value="Delete movie" class="delete">
-            </div>
-            </form>
-            <div class="aux2">
-                <a href=""><button class="cancel">Cancel</button></a>
-            </div>
         </div>
     </form>
-
-
+    <form th:action="@{/movies/{id}/delete (id=${movie.get().getId()})}" th:method="POST" onsubmit="return confirm('Do you realy want to delete this movie');">
+        <div class="aux3">
+            <input type="submit" value="Delete movie" class="delete">
+        </div>
+    </form>
+    <div class="aux2">
+        <a href=""><button class="cancel">Cancel</button></a>
+    </div>
 </main>
 <footer>
     <div class="container-footer">

@@ -1,12 +1,12 @@
 //selecting all required elements
 const dropArea = document.querySelector(".drag-area"),
     dragText = dropArea.querySelector("header"),
-    button = dropArea.querySelector("button"),
+    button = dropArea.querySelector("h3"),
     input = dropArea.querySelector("input");
 let file;
 
 button.onclick = () => {
-    input.click();
+    alert('a');
 }
 
 input.addEventListener("change", function() {

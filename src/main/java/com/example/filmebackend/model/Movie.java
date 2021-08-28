@@ -25,7 +25,7 @@ public class Movie {
         private int duration_min;
         private String descriere;
         public  String image(){
-                return Base64.getMimeEncoder().encodeToString(content);
+                return Base64.getMimeEncoder().encodeToString(content == null ? new byte[] {} : content);
         }
 
 

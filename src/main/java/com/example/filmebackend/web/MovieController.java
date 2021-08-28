@@ -8,8 +8,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.io.IOException;
+import java.util.Optional;
 
 @Controller
 public class MovieController {
@@ -23,13 +28,18 @@ public class MovieController {
         return "layoutFinal";
     }
     @GetMapping("/movies/new")
-    public String newMovie(Model model){
+    public String newMovie(Model model ){
         model.addAttribute("movie",new Movie());
+
+
         return "addMovie";
     }
-    @PostMapping("movies/new")
-    public String newMovie(@Valid Movie movie){
+    @PostMapping("movies/new" )
+    public String newMovie(@Valid Movie movie ,@RequestParam("image")MultipartFile multipart) throws IOException {
+
+        movie.setContent(multipart.getBytes());
         movies.save(movie);
+
         return "redirect:/";
     }
     @GetMapping("/movies")

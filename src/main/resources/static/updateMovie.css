@@ -3,7 +3,11 @@ body * {
     margin: 0;
     padding: 0;
 }
-
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
 .container-nav-fiexd {
     background-color: #262626;
     width: 100%;
@@ -434,17 +438,6 @@ main {
     color: #fbbd61;
 }
 
-.drag-area button {
-    padding: 10px 25px;
-    font-size: 20px;
-    font-weight: 500;
-    border: none;
-    outline: none;
-    background: #fbbd61;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-}
 
 @media(min-width:1024px) {
     .meniu {
@@ -540,10 +533,25 @@ label {
         margin-top: 40px;
     }
 }
-.butoane input{
-    border: 2px solid #ec7532;
-    height: 40px;
-    border-radius: 10px;
-    background-color: #ec7532;
-    color:white;
-}
+.drag-area input{
+    padding: 10px 25px;
+    font-size: 20px;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    background: #fbbd61;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+
+
+
+}.aux2 button,.aux3 input{
+     padding: 10px;
+     background-color: #ec7532;
+     color: white;
+     border: none;
+     border-top-left-radius: 20px;
+     border-bottom-right-radius: 10px;
+     margin-top:20px;
+ }
