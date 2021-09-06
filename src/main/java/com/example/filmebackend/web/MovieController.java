@@ -42,15 +42,32 @@ public class MovieController {
 
         return "redirect:/";
     }
-    @GetMapping("/movies")
-    public String moviesDetails(@Param("id") Long id,Model model){
+    @GetMapping("/movies/{id}")
+    public String moviesDetails(@PathVariable("id") Long id,Model model){
         model.addAttribute("movie",movies.findById(id));
         return "updateMovie";
     }
+
+
+
+
     @PostMapping("/movies/{id}")
-    public String updateBook(@PathVariable Long id,@Valid Movie movie,Model model){
-        movies.save(movie);
+        public String updateMovie( @RequestParam("fileupload")MultipartFile multipart,@PathVariable Long id,@Valid Movie movie) throws IOException {
+
+
+        Movie movie1=movies.findById(id).get();
+        movie1.setContent(multipart.getBytes());
+        System.out.println(multipart.getBytes());
+//        movie1.setCast(movie.getCast());
+//        movie1.setTitle(movie.getTitle());
+//        movie1.setDescriere(movie.getDescriere());
+//        movie1.setDuration_min(movie.getDuration_min());
+       movies.save(movie1);
         return "redirect:/";
+
+
+
+
     }
     @PostMapping("/movies/{id}/delete")
     public String movieDelete(@PathVariable Long id){

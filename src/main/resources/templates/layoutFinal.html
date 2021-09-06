@@ -134,7 +134,8 @@
 
         </div>
         <div class="update">
-          <a th:href="@{'/movies?id='+ ${movie.getId()}}">Update film</a>
+          <a th:href="@{/movies/{id}(id=${movie.getId()})}">Update film</a>
+
         </div>
       </section>
 

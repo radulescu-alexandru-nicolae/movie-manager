@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -87,26 +88,26 @@
     </div>
 </header>
 <main>
-    <form th:method="post" th:action="@{/movies/{id}(id = ${movie.get().getId()})}">
+    <form th:method="post" th:object="${movie}" th:action="@{/movies/{id}(id = ${movie.get().getId()})}"  enctype="multipart/form-data">
         <div class="drag-area">
             <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
             <h2>Drag & Drop to Upload File</h2>
             <span>OR</span>
-            <input type="file"  name="image">
+            <input type="file"  name="fileupload" id="fileUpload">
         </div>
         <div class="container-label">
             <label for="title">Title</label>
-            <input type="text" id="title" name="title" th:value="${movie.get().getTitle()}">
+            <input type="text" id="title" name="title" th:field="*{title}" th:value="${movie.get().getTitle()}">
 
             <label for="director">Director</label>
-            <input type="text" id="director" name="director" th:value="${movie.get().getDirector()}">
+            <input type="text" id="director" name="director" th:field="*{director}" th:value="${movie.get().getDirector()}">
 
             <label for="cast">Cast</label>
-            <input type="text" id="cast" name="cast" th:value="${movie.get().getCast()}">
-            <label for="description">Description</label>
-            <input type="text" id="description" name="description" th:value="${movie.get().getDescriere()}">
+            <input type="text" id="cast" name="cast" th:field="*{cast}" th:value="${movie.get().getCast()}">
+            <label for="descriere">Description</label>
+            <input type="text" id="descriere" name="descriere" th:field="*{descriere}" th:value="${movie.get().getDescriere()}">
             <label for="durata">Duration</label>
-            <input type="number" id="durata" name="durata" th:value="${movie.get().getDuration_min()}">
+            <input type="number" id="durata" name="durataion_min" th:field="*{duration_min}" th:value="${movie.get().getDuration_min()}">
         </div>
         <div class="butoane">
             <div class="aux1">
@@ -165,9 +166,9 @@
         </div>
     </div>
 </footer>
-<script src="/js/paginatie.js"></script>
-<script src="/js/dragDrop.js"></script>
-<script src="/js/meniu.js"></script>
+<script th:src="@{paginatie.js}"></script>
+<script th:src="@{dragDrop.js}"></script>
+<script th:src="@{meniu.js}"></script>
 </body>
 
 </html>
